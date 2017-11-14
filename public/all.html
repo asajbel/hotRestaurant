@@ -41,7 +41,7 @@
 
   <script type="text/javascript">
 
-    $.get("/api", function(data) {
+    $.get("/api/tables", function(data) {
       for (var i = 0; i < data.length; i++) {
         var wellSection = $("<div>");
         wellSection.addClass("well");

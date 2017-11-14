@@ -15,26 +15,26 @@ var tables = [{
   name: "yoda",
   phone: "555 5555 555",
   email: "Jedi@Master.com",
-  id: 900,
+  userId: 900,
 }];
 
 var waitlist = [{
   name: "Darth Vader",
   phone: "100 100 100",
   email: "darth@vader.com",
-  id: 500,
+  userId: 500,
 }];
 
 app.get("/", function(req, res) {
-  res.sendFile(path.join(__dirname + "public/" + "index.html"));
+  res.sendFile(path.join(__dirname + "/public/" + "index.html"));
 });
 
 app.get("/add", function(req, res) {
-  res.sendFile(path.join(__dirname + "public/" + "add.html"));
+  res.sendFile(path.join(__dirname + "/public/" + "add.html"));
 });
 
 app.get("/all", function(req, res) {
-  res.sendFile(path.join(__dirname + "public/" + "all.html"));
+  res.sendFile(path.join(__dirname + "/public/" + "all.html"));
 });
 
 app.get("/api/tables", function(req, res) {
