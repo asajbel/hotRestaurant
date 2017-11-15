@@ -35,6 +35,15 @@
 
           </div>
         </div>
+
+        <div class="panel panel-default">
+          <div class="panel-heading">
+              <h3 class="panel-title"><strong>Waitlist</strong></h3>
+          </div>
+          <div class="panel-body" id="well-section-waitlist">
+          </div>
+        </div>
+
       </div>
     </div>
   </div>
@@ -52,6 +61,20 @@
         $("#character-well-" + i).append("<h3>Email: " + data[i].email + "</h4>");
         $("#character-well-" + i).append("<h3>Phone: " + data[i].phone + "</h4>");
         $("#character-well-" + i).append("<h3>userID: " + data[i].userID + "</h4>");
+      }
+    });
+
+    $.get("/api/waitlist", function(data) {
+      for (var i = 0; i < data.length; i++) {
+        var wellSection = $("<div>");
+        wellSection.addClass("well");
+        wellSection.attr("id", "character-well-wait-" + i);
+        $("#well-section-waitlist").append(wellSection);
+
+        $("#character-well-wait-" + i).append("<h2>" + data[i].name + "</h2>");
+        $("#character-well-wait-" + i).append("<h3>Email: " + data[i].email + "</h4>");
+        $("#character-well-wait-" + i).append("<h3>Phone: " + data[i].phone + "</h4>");
+        $("#character-well-wait-" + i).append("<h3>userID: " + data[i].userID + "</h4>");
       }
     });
   </script>
