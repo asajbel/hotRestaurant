@@ -60,7 +60,8 @@
         $("#character-well-" + i).append("<h2>" + data[i].name + "</h2>");
         $("#character-well-" + i).append("<h3>Email: " + data[i].email + "</h4>");
         $("#character-well-" + i).append("<h3>Phone: " + data[i].phone + "</h4>");
-        $("#character-well-" + i).append("<h3>userID: " + data[i].userID + "</h4>");
+        $("#character-well-" + i).append("<h3>userId: " + data[i].userId + "</h4>");
+        $("#character-well-" + i).append('<button type="button" class="btn btn-primary btn-lg btnCheck" data-id="'+data[i].userId+'" ><span class="glyphicon glyphicon-ok"></span> Clear Table</button>');
       }
     });
 
@@ -74,9 +75,40 @@
         $("#character-well-wait-" + i).append("<h2>" + data[i].name + "</h2>");
         $("#character-well-wait-" + i).append("<h3>Email: " + data[i].email + "</h4>");
         $("#character-well-wait-" + i).append("<h3>Phone: " + data[i].phone + "</h4>");
-        $("#character-well-wait-" + i).append("<h3>userID: " + data[i].userID + "</h4>");
+        $("#character-well-wait-" + i).append("<h3>userId: " + data[i].userId + "</h4>");
+        $("#character-well-wait-" + i).append('<button type="button" class="btn btn-primary btn-lg btnCheck" data-id="'+data[i].userId+'" ><span class="glyphicon glyphicon-ok"></span> Got Table</button>');
       }
     });
+
+    // Question: What does this code do?
+    $(document).on("click",".btnCheck", function(event) {
+      event.preventDefault();
+      var newTable = {
+        userID: $(this).attr("data-id")
+      };
+      console.log(newTable.userID);
+      $.post("/api/check", newTable)
+      .done(function(data) {
+        console.log(data);
+        alert("Removing table...");
+      });
+      location.reload();
+        });
+    //
+    //   $(".btnCheckReserve").on("click", function(event) {
+    //     event.preventDefault();
+    //     var newTable = {
+    //       userID: $(this).attr("data-id").val().trim()
+    //     };
+    //
+    //   // Question: What does this code do??
+    //   $.post("/api/ckeck", newTable)
+    //   .done(function(data) {
+    //     console.log(data);
+    //     alert("Adding table...");
+    //   });
+    // });
+
   </script>
 
 </body>
