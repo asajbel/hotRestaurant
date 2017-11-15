@@ -40,9 +40,14 @@ router.post("/check", function(req, res) {
   console.log(check);
   for(var i = 0; i < tables.length; i++) {
     if (check.userId = tables[i].userId) {
-
+      table = tables.splice(i, 1);
     }
   }
+  if (table !== undefined) {
+    tables.push(waitlist.shift());
+    return res.json(table);
+  }
+  return res.json(false);
 });
 
 module.exports = router;
