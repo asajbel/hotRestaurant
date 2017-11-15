@@ -84,7 +84,7 @@
     $(document).on("click",".btnCheck", function(event) {
       event.preventDefault();
       var newTable = {
-        userID: $(this).attr("data-id")
+        userId: $(this).attr("data-id")
       };
       console.log(newTable.userID);
       $.post("/api/check", newTable)

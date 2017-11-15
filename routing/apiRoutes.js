@@ -5,14 +5,14 @@ var tables = [{
   name: "yoda",
   phone: "555 5555 555",
   email: "Jedi@Master.com",
-  userId: 900,
+  userId: "900",
 }];
 
 var waitlist = [{
   name: "Darth Vader",
   phone: "100 100 100",
   email: "darth@vader.com",
-  userId: 500,
+  userId: "500",
 }];
 
 router.get("/tables", function(req, res) {
@@ -36,15 +36,21 @@ router.post("/new", function(req, res) {
 
 router.post("/check", function(req, res) {
   var check = req.body;
-  var table = undefined; 
+  var table = undefined;
+  var tableIndex = undefined;
   console.log(check);
-  for(var i = 0; i < tables.length; i++) {
-    if (check.userId = tables[i].userId) {
-      table = tables.splice(i, 1);
+  for (var i = 0; i < tables.length; i++) {
+    console.log(check.userId === tables[i].userId, check.userId, tables[i].userId);
+    if (check.userId === tables[i].userId) {
+      tableIndex = i;
     }
   }
-  if (table !== undefined) {
-    tables.push(waitlist.shift());
+  if (tableIndex !== undefined) {
+
+    table = tables.splice(tableIndex, 1);
+    if (waitlist.length > 0) {
+      tables.push(waitlist.shift());
+    }
     return res.json(table);
   }
   return res.json(false);
