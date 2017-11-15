@@ -56,6 +56,17 @@ app.post("/api/new", function(req, res) {
   }
 });
 
+app.post("/api/check", function(req, res) {
+  var check = req.body;
+  var table = undefined; 
+  console.log(check);
+  for(var i = 0; i < tables.length; i++) {
+    if (check.userId = tables[i].userId) {
+      
+    }
+  }
+})
+
 
 app.listen(PORT, function() {
   console.log("App listening on PORT " + PORT);
